@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { PUBLIC_TEST } from '$env/static/public';
+	import { PUBLIC_API_ENDPOINT } from '$env/static/public';
 	import { spring } from 'svelte/motion';
-	const test = PUBLIC_TEST;
+	const test = PUBLIC_API_ENDPOINT;
 	let count = 0;
 
 	const displayed_count = spring();

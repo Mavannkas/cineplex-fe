@@ -1,5 +1,5 @@
 <script>
-	import { PUBLIC_TEST } from '$env/static/public';
+	import { PUBLIC_API_ENDPOINT } from '$env/static/public';
 </script>
 
 <div class="app">
@@ -8,7 +8,7 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> {PUBLIC_TEST}</p>
+		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> {PUBLIC_API_ENDPOINT}</p>
 	</footer>
 </div>
 
