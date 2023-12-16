@@ -21,6 +21,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: create .env file
+        run: |
+          echo "PUBLIC_API_ENDPOINT=${{ vars.PUBLIC_API_ENDPOINT }}" >> .env
+          echo "PORT=${{ vars.PORT }}" >> .env
+
       - name: Build App
         run: npm run build
   deploy:
