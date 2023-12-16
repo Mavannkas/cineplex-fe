@@ -41,7 +41,7 @@
 		"dotenv": "^16.3.1",
 		"pm2": "^5.3.0"
 	},
-	"resolutions": {
+	"overrides": {
 		"rollup": "npm:@rollup/wasm-node"
 	}
 }
