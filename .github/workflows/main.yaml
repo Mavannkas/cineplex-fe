@@ -21,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build Fastify App
-        run: npm run build:ts
+      - name: Build App
+        run: npm run build
   deploy:
     runs-on: ubuntu-latest
     needs: validate
