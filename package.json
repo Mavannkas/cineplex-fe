@@ -10,7 +10,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"start": "node -r dotenv/config build/index.js",
-		"production:run": "pm2 start \"npm run start\" --name fastify-app-fe",
+		"production:run": "pm2 start \"node -r dotenv/config build/index.js\" --name fastify-app-fe",
 		"production:stop": "pm2 stop fastify-app-fe",
 		"production:logs": "pm2 logs fastify-app-fe",
 		"production:restart": "./node_modules/pm2/bin/pm2 restart fastify-app-fe"
