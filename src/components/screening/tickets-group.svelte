@@ -13,7 +13,7 @@
 	}
 </script>
 
-{#each Object.keys(selectedSeats) as key}}
+{#each Object.keys(selectedSeats) as key}
 	<Select
 		label="Rodzaj biletu dla miejsca {key}"
 		value={selectedSeats[key].type}
