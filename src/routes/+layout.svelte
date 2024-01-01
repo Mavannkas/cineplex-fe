@@ -17,7 +17,7 @@
 
 <style lang="postcss">
 	:global(html) {
-		background-color: rgb(243 244 246);
+		background-color: theme(colors.gray.100);
 	}
 
 	main {
