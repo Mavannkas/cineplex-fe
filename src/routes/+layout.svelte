@@ -1,50 +1,35 @@
 <script>
 	import { PUBLIC_API_ENDPOINT } from '$env/static/public';
+	import '../app.css';
 </script>
 
-<div class="app">
-	<main>
+<main class="flex-container bg-gray-100">
+	<!-- Main container with centered content -->
+	<section class="flex-grow flex items-center justify-center">
 		<slot />
-	</main>
+	</section>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> {PUBLIC_API_ENDPOINT}</p>
+	<!-- Footer at the bottom -->
+	<footer class="bg-gray-800 text-white p-4">
+		<p class="text-center">Your Footer Content</p>
 	</footer>
-</div>
+</main>
 
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
+<style lang="postcss">
+	:global(html) {
+		background-color: theme(colors.gray.100);
 	}
 
 	main {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
+		min-height: 100vh; /* Make sure the container takes at least the full height of the viewport */
 	}
 
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
+	html,
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
 	}
 </style>
