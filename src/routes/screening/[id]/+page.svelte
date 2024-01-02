@@ -4,12 +4,19 @@
 	import SeatsArrangement from '../../../components/screening/seats-arrangement.svelte';
 	import TicketsGroup from '../../../components/screening/tickets-group.svelte';
 	import type { ReservationParams, TicketType } from '../../../types/reservation.types';
+	import Popup from '../../../components/util/popup.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data;
 	let grid = data.data;
-
+	console.log(grid);
 	let name: string = '';
 	let ticketsCount: number = 1;
+
+	let showPopup = false;
+	let popupTitle = '';
+	let popupCloseAction = () => {};
+	let popupContent = '';
 
 	const maxAvailable = grid.reduce((acc, row) => {
 		return acc + row.filter((cell) => cell === 1).length;
@@ -38,7 +45,7 @@
 		// Toggle the clicked state
 		if (grid[row][col] === 1) {
 			if (selectedSeatsCount >= ticketsCount) {
-				alert('Już wybrałeś wszystkie miejsca!'); //add popup
+				showErrorPopup('Już wybrałeś wszystkie miejsca!'); //add popup
 				return;
 			}
 			grid[row][col] = 3;
@@ -53,7 +60,7 @@
 			selectedSeats = selectedSeats;
 			selectedSeatsCount--;
 		} else if (grid[row][col] === 2) {
-			alert('To miejsce jest zajęte!'); //add popup
+			showErrorPopup('To miejsce jest zajęte!'); //add popup
 		}
 	}
 
@@ -68,7 +75,7 @@
 			const seatID = reservation[0];
 			const type = +reservation[1].type;
 			if (!isIdValid(seatID)) {
-				alert('Nieprawidłowy identyfikator miejsca!');
+				showErrorPopup('Nieprawidłowy identyfikator miejsca!');
 				return;
 			}
 
@@ -84,6 +91,14 @@
 				} satisfies ReservationParams)
 			});
 		}
+
+		showPopup = true;
+		popupTitle = 'Sukces';
+		popupContent = 'Rezerwacja przebiegła pomyślnie!';
+		popupCloseAction = () => {
+			cleanup();
+			goto('/screening/1');
+		};
 	}
 
 	function isIdValid(seatID: string): seatID is `${number},${number}` {
@@ -95,6 +110,21 @@
 			return false;
 		}
 		return true;
+	}
+
+	function showErrorPopup(content: string) {
+		popupTitle = 'Uwaga';
+		showPopup = true;
+		popupContent = content;
+		popupCloseAction = () => {};
+	}
+
+	function cleanup() {
+		name = '';
+		ticketsCount = 1;
+		selectedSeatsCount = 0;
+		selectedSeats = {};
+		grid = grid.map((row) => row.map((cell) => (cell === 3 ? 2 : cell)));
 	}
 </script>
 
@@ -134,6 +164,10 @@
 		</div>
 	</form>
 </div>
+
+<Popup bind:show={showPopup} onClose={popupCloseAction} title={popupTitle}>
+	<p>{popupContent}</p>
+</Popup>
 
 <style>
 	.margin-left {
