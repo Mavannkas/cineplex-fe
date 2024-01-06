@@ -1,6 +1,7 @@
 import { PUBLIC_API_ENDPOINT } from '$env/static/public';
+import type { SeatStatus } from '../../../types/room.types';
 
-export async function load({ params }: { params: { id: string } }): Promise<{ data: number[][] }> {
+export async function load({ params }: { params: { id: string } }): Promise<{ data?: SeatStatus[][], error?: string }> {
 	try {
 		const result = await fetch(`${PUBLIC_API_ENDPOINT}/screening/${params.id}/seats_status`);
 		if (!result.ok) {
@@ -13,7 +14,7 @@ export async function load({ params }: { params: { id: string } }): Promise<{ da
 		if (error instanceof Error) {
 			console.error(error.message);
 		}
-		return { data: [] };
+		return { error: "Not existing screening" };
 	}
 
 } 

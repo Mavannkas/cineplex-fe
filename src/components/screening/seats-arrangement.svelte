@@ -1,30 +1,33 @@
-<script>
-	/**
-	 * @type {number[][]}
-	 */
-	export let grid;
+<script lang="ts">
+	import type { SeatStatus } from '../../types/room.types';
+
+	export let grid: SeatStatus[][];
 
 	/**
 	 * @type {(a: number, b: number) => void}
 	 */
-	export let onAction = () => {};
+	export let onAction = (a: number, b: number) => {};
 
-	const svgHeight = grid.length * 22;
-	const svgWidth = grid[0].length * 22;
+	let svgHeight: number;
+	let svgWidth: number;
 
+	$: {
+		svgHeight = grid.length * 22;
+		svgWidth = grid[0].length * 22 + 15;
+	}
 	/**
 	 * @param {number} row
 	 * @param {number} col
 	 */
-	function handleClick(row, col) {
+	function handleClick(row: number, col: number) {
 		onAction(row, col);
 	}
 </script>
 
 <div class="mb-4">
 	<label class="block text-gray-700 text-sm font-bold mb-2" for="username"> Wybierz miejsca </label>
-	<div class="flex justify-center bg-gray-100 p-2">
-		<svg width={svgWidth} height={svgHeight}>
+	<div class="overflow-auto bg-gray-100 p-2">
+		<svg width={svgWidth} height={svgHeight} class="m-auto" style="width: {svgWidth};">
 			{#each grid as row, rowIndex}
 				<text
 					x="10"
