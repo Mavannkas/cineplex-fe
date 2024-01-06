@@ -6,7 +6,7 @@
 	export let label = '';
 </script>
 
-<label class="mb-4">
+<label class="block pb-4">
 	{#if label}
 		<span class="block mb-2 text-sm font-medium text-gray-900">{label}</span>
 	{/if}

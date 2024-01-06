@@ -10,6 +10,7 @@
 	$: validate(value);
 
 	function validate(value: string | null | number) {
+		console.log(value);
 		if (typeof value === 'number') {
 			if (min && value < min) {
 				error = `Wartość musi być większa od ${min}`;
@@ -18,6 +19,8 @@
 			} else {
 				error = '';
 			}
+		} else if (value == null) {
+			error = 'To pole jest wymagane';
 		} else {
 			if (value === '') {
 				error = 'To pole jest wymagane';
@@ -36,7 +39,7 @@
 	}
 </script>
 
-<label class="mb-4">
+<label class="block pb-4">
 	{#if label}
 		<span class="block mb-2 text-sm font-medium text-gray-900">{label}</span>
 	{/if}

@@ -9,20 +9,24 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
+	<h1
+		class="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl"
+	>
+		Index
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<ul class="list-disc">
+		<li>
+			<a class="text-blue hover:text-blue-hover hover:underline" href="/screening/1"
+				>przyklad rezerwacji miejsc</a
+			>
+		</li>
+		<li>
+			<a class="text-blue hover:text-blue-hover hover:underline" href="/room/create"
+				>przyklad tworzenia sali</a
+			>
+		</li>
+	</ul>
+	<p></p>
 </section>
 
 <style>
