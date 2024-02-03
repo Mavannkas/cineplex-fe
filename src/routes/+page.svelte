@@ -25,6 +25,26 @@
 				>przyklad tworzenia sali</a
 			>
 		</li>
+		<li>
+			<a class="text-blue hover:text-blue-hover hover:underline" href="/movie/create"
+				>przyklad dodawania filmów</a
+			>
+		</li>
+		<li>
+			<a class="text-blue hover:text-blue-hover hover:underline" href="/movie/fetch"
+				>przykład wyświetlania filmów</a
+			>
+		</li>
+		<li>
+			<a class="text-blue hover:text-blue-hover hover:underline" href="/movie/update"
+				>przykład edycja filmu</a
+			>
+		</li>
+		<li>
+			<a class="text-blue hover:text-blue-hover hover:underline" href="/movie/delete"
+				>przykład usuwanie filmów</a
+			>
+		</li>
 	</ul>
 	<p></p>
 </section>
